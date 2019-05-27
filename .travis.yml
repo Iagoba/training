@@ -42,6 +42,6 @@ notifications:
     on_start: false     # default: false
 
 after_success:
-  - docker build -t jeykow/training
+  - docker build -t jeykow/training .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - - docker push jeykow/training
