@@ -28,7 +28,6 @@ before_install:
   - npm install -g npm
   - node -v
   - npm -v
-  - docker build -t jeykow/docker_react -f Dockerfile.dev .
 install:
   - npm install
 script:
