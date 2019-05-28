@@ -28,6 +28,7 @@ before_install:
   - npm install -g npm
   - node -v
   - npm -v
+  - docker build -t jeykow/docker_react -f Dockerfile.dev .
 install:
   - npm install
 script:
@@ -35,6 +36,7 @@ script:
   - ./mvnw clean verify
   - ./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test' -Dmaven.repo.local=$MAVEN_USER_HOME
   - ./mvnw verify -Pprod -DskipTests
+  - docker run -e CI=true jeykow/training npm run test -- --watchAll=false
 after_success:
   - docker build -t jeykow/training .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
