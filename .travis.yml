@@ -35,10 +35,6 @@ script:
   - ./mvnw clean verify
   - ./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test' -Dmaven.repo.local=$MAVEN_USER_HOME
   - ./mvnw verify -Pprod -DskipTests
-after_success:
-  - docker build -t jeykow/training -f Dockerfile .
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push jeykow/training
 notifications:
   webhooks:
     on_success: change  # options: [always|never|change] default: always
