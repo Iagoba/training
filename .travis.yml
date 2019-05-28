@@ -36,7 +36,6 @@ script:
   - ./mvnw clean verify
   - ./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test' -Dmaven.repo.local=$MAVEN_USER_HOME
   - ./mvnw verify -Pprod -DskipTests
-  - - docker run jeykow/training npm test -- --coverage
 after_success:
   - docker build -t jeykow/training .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin

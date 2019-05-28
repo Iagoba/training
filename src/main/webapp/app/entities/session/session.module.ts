@@ -12,10 +12,16 @@ import {
   sessionPopupRoute
 } from './';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ButtonModule } from 'primeng/primeng';
+
 const ENTITY_STATES = [...sessionRoute, ...sessionPopupRoute];
 
 @NgModule({
-  imports: [TrainingSharedModule, RouterModule.forChild(ENTITY_STATES)],
+  imports: [TrainingSharedModule, RouterModule.forChild(ENTITY_STATES),
+    BrowserAnimationsModule,
+    ButtonModule
+  ],
   declarations: [
     SessionComponent,
     SessionDetailComponent,
