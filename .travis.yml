@@ -31,8 +31,8 @@ before_install:
 install:
     - npm install
 script:
-   - docker build -t Dockerfile .
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker build -t jeykow/training f Dockerfile .
     - docker push jeykow/training
 notifications:
     webhooks:
