@@ -4,5 +4,5 @@ services:
     - docker
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker tag Dockerfile jeykow/training
+  - docker build .
   - docker push jeykow/training
